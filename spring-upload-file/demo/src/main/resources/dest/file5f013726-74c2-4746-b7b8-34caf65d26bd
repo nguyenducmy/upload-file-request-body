@@ -1,0 +1,30 @@
+cd /home/myn/WorkStation/kafka_2.12-1.1.0/bin/
+
+Step1: turn on zookeeper server
+chmod 777 ./    --->> permission for all folder 
+sh zookeeper-server-start.sh /home/myn/WorkStation/kafka_2.12-1.1.0/config/zookeeper.properties
+
+
+step2: turn on kafka server
+sh kafka-server-start.sh /home/myn/WorkStation/kafka_2.12-1.1.0/config/server.properties
+
+
+step3: create topic
+sh kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 -topic javatechie
+
+Produce a message
+sh kafka-console-producer.sh --broker-list localhost:9092 --topic javatechie
+
+Consume a message
+sh kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic javatechie
+
+
+
+
+
+
+
+
+others command:
+	1. to list topic :sh kafka-topics.sh --list --zookeeper localhost:2181
+
